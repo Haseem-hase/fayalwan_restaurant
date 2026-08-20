@@ -1,8 +1,11 @@
 import React from 'react'
+import MenuCarousel from '@/components/MenuCarousel'
 
 const page = () => {
   return (
-    <div>page</div>
+    <main>
+      <MenuCarousel />
+    </main>
   )
 }
 
