@@ -41,6 +41,7 @@ export default function MenuCarousel() {
   const [rotation, setRotation] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [scale, setScale] = useState(1);
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const dragStartRef = useRef({ x: 0, rot: 0 });
@@ -142,6 +143,12 @@ export default function MenuCarousel() {
           const currentAngleRad = (item.baseAngle + rotation) * (Math.PI / 180);
           const x = RADIUS_X * Math.cos(currentAngleRad);
           const y = RADIUS_Y * Math.sin(currentAngleRad);
+          
+          // Calculate dynamic depth so items in front overlap items in back
+          const depthZIndex = Math.floor(y + RADIUS_Y);
+          
+          const isHovered = hoveredId === item.id;
+          const isOtherHovered = hoveredId !== null && hoveredId !== item.id;
 
           return (
             <div
@@ -152,12 +159,16 @@ export default function MenuCarousel() {
                 height: item.h,
                 left: x,
                 top: y,
-                zIndex: item.z,
-                transform: `translate(-50%, -50%)`,
+                zIndex: isHovered ? 9999 : depthZIndex,
+                transform: `translate(-50%, -50%) ${isHovered ? 'scale(1.25)' : 'scale(1)'}`,
+                filter: isOtherHovered ? 'grayscale(100%) opacity(0.6)' : 'grayscale(0%) opacity(1)',
+                transition: 'transform 0.4s ease-out, filter 0.4s ease-out',
               }}
+              onMouseEnter={() => setHoveredId(item.id)}
+              onMouseLeave={() => setHoveredId(null)}
             >
             <div 
-              className="w-full h-full overflow-hidden transition-transform duration-300 ease-out hover:scale-110 shadow-[0_0_30px_rgba(0,0,0,0.5)]"
+              className="w-full h-full overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.8)] rounded-xl"
               style={{ backgroundColor: item.bgColor || 'transparent' }}
             >
               {item.src && (
