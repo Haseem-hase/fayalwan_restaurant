@@ -5,18 +5,18 @@ import Header from './Header';
 import Footer from './Footer';
 
 const images = [
-  "https://images.unsplash.com/photo-1542304928-86088d8b4e70?q=80&w=600",
-  "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600",
-  "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600",
-  "https://images.unsplash.com/photo-1518002171953-a080ee817e1f?q=80&w=600",
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600",
-  "https://images.unsplash.com/photo-1542282088-fe8426682b8f?q=80&w=600",
-  "https://images.unsplash.com/photo-1594035987173-16c810fb594b?q=80&w=600",
-  "https://images.unsplash.com/photo-1572018861314-5d5d852a392b?q=80&w=600",
-  "https://images.unsplash.com/photo-1600109961912-3269b6dcba44?q=80&w=600",
-  "https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?q=80&w=600",
-  "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600",
-  "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=600",
+  "/assets/foodimages/cb.webp",
+  "/assets/foodimages/chillyChicken.webp",
+  "/assets/foodimages/daal.webp",
+  "/assets/foodimages/friedRice.webp",
+  "/assets/foodimages/gheerice.webp",
+  "/assets/foodimages/masalaDosa.webp",
+  "/assets/foodimages/noodles.webp",
+  "/assets/foodimages/poori.webp",
+  "/assets/foodimages/porrotta.webp",
+  "/assets/foodimages/sambaar.webp",
+  "/assets/foodimages/teaSnacks.webp",
+  "/assets/foodimages/vada.webp",
 ];
 
 const RADIUS_X = 450;
@@ -126,15 +126,14 @@ export default function MenuCarousel() {
           transform: `translate(-50%, -50%) scale(${scale})`,
         }}
       >
-        {/* Center Logo/Atom */}
+        {/* Center Logo/Chef Hat */}
         <div 
-          className="absolute top-0 left-0 w-16 h-8 z-10"
-          style={{ transform: `translate(-50%, -50%) rotate(${rotation * 0.5}deg)` }}
+          className="absolute top-0 left-0 w-12 h-12 z-10"
+          style={{ transform: `translate(-50%, -50%)` }}
         >
-          <svg width="100%" height="100%" viewBox="0 0 60 30" fill="none" stroke="white" strokeWidth="1">
-            <ellipse cx="30" cy="15" rx="28" ry="6" transform="rotate(-30 30 15)" />
-            <ellipse cx="30" cy="15" rx="28" ry="6" transform="rotate(30 30 15)" />
-            <ellipse cx="30" cy="15" rx="28" ry="6" transform="rotate(0 30 15)" />
+          <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589c-.26 0-.482-.156-.562-.416a4.996 4.996 0 0 0-9.61 0c-.08.26-.301.416-.562.416a4 4 0 0 0-2.134 7.589c.411.197.727.584.727 1.04V20a1 1 0 0 0 1 1z" />
+            <path d="M6 17h12" />
           </svg>
         </div>
 
