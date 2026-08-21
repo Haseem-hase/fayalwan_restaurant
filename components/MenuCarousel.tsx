@@ -38,7 +38,6 @@ const itemsData = images.map((src, i) => {
 export default function MenuCarousel() {
   const [rotation, setRotation] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [scale, setScale] = useState(1);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -58,16 +57,7 @@ export default function MenuCarousel() {
     return () => window.removeEventListener('resize', updateScale);
   }, []);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({
-        x: (e.clientX / window.innerWidth) * 2 - 1,
-        y: (e.clientY / window.innerHeight) * 2 - 1,
-      });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+
 
   useEffect(() => {
     const animate = () => {
@@ -129,7 +119,7 @@ export default function MenuCarousel() {
       <div 
         className="absolute top-1/2 left-1/2 will-change-transform"
         style={{
-          transform: `translate(-50%, -50%) translate(${mousePos.x * 30}px, ${mousePos.y * 30}px) scale(${scale})`,
+          transform: `translate(-50%, -50%) scale(${scale})`,
         }}
       >
         {/* Center Logo/Atom */}
