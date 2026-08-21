@@ -17,18 +17,17 @@ const images = [
   "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=600",
 ];
 
-const RADIUS = 380;
+const RADIUS_X = 450;
+const RADIUS_Y = 250;
 const ITEM_WIDTH = 280;
 const ITEM_HEIGHT = 180;
 
-const items = images.map((src, i) => {
+const itemsData = images.map((src, i) => {
   const angle = (i * 360) / images.length;
-  const angleRad = (angle * Math.PI) / 180;
   return {
     id: i + 1,
     src,
-    x: RADIUS * Math.cos(angleRad),
-    y: RADIUS * Math.sin(angleRad),
+    baseAngle: angle,
     w: ITEM_WIDTH,
     h: ITEM_HEIGHT,
     z: 1,
@@ -106,9 +105,16 @@ export default function MenuCarousel() {
     }
   };
 
-  const handleWheel = (e: React.WheelEvent) => {
-    targetRotation.current += e.deltaY * 0.02;
-  };
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const handleNativeWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      targetRotation.current += e.deltaY * 0.02;
+    };
+    el.addEventListener('wheel', handleNativeWheel, { passive: false });
+    return () => el.removeEventListener('wheel', handleNativeWheel);
+  }, []);
 
   return (
     <div 
@@ -118,19 +124,18 @@ export default function MenuCarousel() {
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerUp}
-      onWheel={handleWheel}
       style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
     >
       <div 
         className="absolute top-1/2 left-1/2 will-change-transform"
         style={{
-          transform: `translate(-50%, -50%) translate(${mousePos.x * 30}px, ${mousePos.y * 30}px) scale(${scale}) rotate(${rotation}deg)`,
+          transform: `translate(-50%, -50%) translate(${mousePos.x * 30}px, ${mousePos.y * 30}px) scale(${scale})`,
         }}
       >
         {/* Center Logo/Atom */}
         <div 
           className="absolute top-0 left-0 w-16 h-8 z-10"
-          style={{ transform: `translate(-50%, -50%) rotate(${-rotation}deg)` }}
+          style={{ transform: `translate(-50%, -50%) rotate(${rotation * 0.5}deg)` }}
         >
           <svg width="100%" height="100%" viewBox="0 0 60 30" fill="none" stroke="white" strokeWidth="1">
             <ellipse cx="30" cy="15" rx="28" ry="6" transform="rotate(-30 30 15)" />
@@ -140,19 +145,24 @@ export default function MenuCarousel() {
         </div>
 
         {/* Orbiting Images */}
-        {items.map((item) => (
-          <div
-            key={item.id}
-            className="absolute will-change-transform"
-            style={{
-              width: item.w,
-              height: item.h,
-              left: item.x,
-              top: item.y,
-              zIndex: item.z,
-              transform: `translate(-50%, -50%) rotate(${-rotation}deg)`,
-            }}
-          >
+        {itemsData.map((item) => {
+          const currentAngleRad = (item.baseAngle + rotation) * (Math.PI / 180);
+          const x = RADIUS_X * Math.cos(currentAngleRad);
+          const y = RADIUS_Y * Math.sin(currentAngleRad);
+
+          return (
+            <div
+              key={item.id}
+              className="absolute will-change-transform"
+              style={{
+                width: item.w,
+                height: item.h,
+                left: x,
+                top: y,
+                zIndex: item.z,
+                transform: `translate(-50%, -50%)`,
+              }}
+            >
             <div 
               className="w-full h-full overflow-hidden transition-transform duration-300 ease-out hover:scale-110 shadow-[0_0_30px_rgba(0,0,0,0.5)]"
               style={{ backgroundColor: item.bgColor || 'transparent' }}
@@ -166,7 +176,8 @@ export default function MenuCarousel() {
               )}
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
