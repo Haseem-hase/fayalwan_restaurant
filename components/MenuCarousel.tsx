@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Header from './Header';
+import Footer from './Footer';
 
 const images = [
   "https://images.unsplash.com/photo-1542304928-86088d8b4e70?q=80&w=600",
@@ -118,6 +119,7 @@ export default function MenuCarousel() {
       style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
     >
       <Header />
+      <Footer />
       <div 
         className="absolute top-1/2 left-1/2 will-change-transform"
         style={{
