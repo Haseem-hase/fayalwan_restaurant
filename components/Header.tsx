@@ -12,17 +12,17 @@ const Header = () => {
 
       {/* Middle */}
       <div className="flex-1 flex justify-center pointer-events-auto">
-        <span className="text-xs font-bold tracking-[0.2em] cursor-pointer hover:text-gray-400 transition-colors uppercase">
+        <span className="text-[11px] font-medium tracking-[0.25em] cursor-pointer hover:text-gray-400 transition-colors uppercase">
           Menu
         </span>
       </div>
 
       {/* Right */}
       <div className="flex-1 flex justify-end gap-10 md:gap-16 pointer-events-auto">
-        <span className="text-xs font-bold tracking-[0.2em] cursor-pointer hover:text-gray-400 transition-colors uppercase">
+        <span className="text-[11px] font-medium tracking-[0.25em] cursor-pointer hover:text-gray-400 transition-colors uppercase">
           Contact
         </span>
-        <span className="text-xs font-bold tracking-[0.2em] cursor-pointer hover:text-gray-400 transition-colors uppercase">
+        <span className="text-[11px] font-medium tracking-[0.25em] cursor-pointer hover:text-gray-400 transition-colors uppercase">
           About
         </span>
       </div>
