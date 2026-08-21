@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="absolute bottom-0 left-0 w-full z-50 flex items-center justify-between px-12 py-10 text-white select-none pointer-events-none">
+    <footer className="absolute bottom-0 left-0 w-full z-50 flex items-center justify-between px-12 pt-10 pb-6 text-white select-none pointer-events-none">
       {/* Left */}
       <div className="flex-1 pointer-events-auto">
         <span className="text-[10px] text-gray-400 font-medium tracking-[0.25em] uppercase">
