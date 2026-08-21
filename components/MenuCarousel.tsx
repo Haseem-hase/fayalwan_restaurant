@@ -1,8 +1,6 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import Header from './Header';
-import Footer from './Footer';
 
 const images = [
   "/assets/foodimages/cb.webp",
@@ -119,8 +117,6 @@ export default function MenuCarousel() {
       onPointerCancel={handlePointerUp}
       style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
     >
-      <Header />
-      <Footer />
       <div 
         className="absolute top-1/2 left-1/2 will-change-transform"
         style={{
