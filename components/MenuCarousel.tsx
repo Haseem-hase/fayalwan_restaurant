@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Header from './Header';
 
 const images = [
   "https://images.unsplash.com/photo-1542304928-86088d8b4e70?q=80&w=600",
@@ -116,6 +117,7 @@ export default function MenuCarousel() {
       onPointerCancel={handlePointerUp}
       style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
     >
+      <Header />
       <div 
         className="absolute top-1/2 left-1/2 will-change-transform"
         style={{
