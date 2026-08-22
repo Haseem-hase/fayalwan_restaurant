@@ -3,11 +3,12 @@ import Header from '@/components/Header';
 
 export default function AboutPage() {
   return (
-    <main className="relative min-h-screen bg-[#FF4500] text-white overflow-hidden font-sans select-none flex flex-col justify-between">
+    <main className="relative bg-[#FF4500] text-white font-sans select-none">
       <Header />
       
-      {/* Center Content: Poetic Editorial Text Layout */}
-      <div className="flex-1 flex items-center justify-center w-full px-4 mt-20">
+      {/* First Section: About Text */}
+      <section className="relative min-h-screen flex flex-col justify-between pt-32">
+        <div className="flex-1 flex items-center justify-center w-full px-4">
         <div className="flex flex-col items-center text-center max-w-5xl mx-auto px-4">
           <p className="text-sm md:text-base lg:text-lg font-medium tracking-[0.15em] md:tracking-[0.2em] uppercase text-white leading-[2] md:leading-[2.5]">
             FAYALWAN RESTAURANT<br/>
@@ -25,7 +26,7 @@ export default function AboutPage() {
       </div>
 
       {/* Footer / Bottom Content (Consistent with Contact Page) */}
-      <div className="w-full z-50 flex items-end justify-between px-12 pb-10 text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold text-gray-200 mt-auto">
+      <div className="w-full z-50 flex items-end justify-between px-12 pb-10 text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold text-gray-200 mt-12">
         
         {/* Left: Address */}
         <div className="flex flex-col gap-1">
@@ -48,6 +49,16 @@ export default function AboutPage() {
         </div>
         
       </div>
+      </section>
+
+      {/* Second Section: Full Screen Image */}
+      <section className="relative h-screen w-full">
+         <img 
+           src="/assets/Frames/wallPic.webp" 
+           alt="Restaurant Wall" 
+           className="w-full h-full object-cover"
+         />
+      </section>
     </main>
   );
 }
