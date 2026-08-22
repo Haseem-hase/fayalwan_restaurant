@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 
 const page = () => {
   return (
-    <main className="relative min-h-screen bg-black overflow-hidden">
+    <main className="relative min-h-screen bg-[#FF4500] overflow-hidden">
       <Header />
       <MenuCarousel />
       <Footer />

@@ -109,7 +109,7 @@ export default function MenuCarousel() {
 
   return (
     <div 
-      className="relative w-full h-screen bg-black overflow-hidden select-none touch-none"
+      className="relative w-full h-screen bg-[#FF4500] overflow-hidden select-none touch-none"
       ref={containerRef}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
