@@ -59,6 +59,42 @@ export default function AboutPage() {
            className="w-full h-full object-cover"
          />
       </section>
+
+      {/* Third Section: Founders */}
+      <section className="relative min-h-screen w-full bg-[#FF4500] flex flex-col items-center justify-center py-20 px-4">
+        <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold uppercase tracking-[0.2em] text-white mb-16 text-center">
+          Our Founders
+        </h2>
+        
+        <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-16 lg:gap-24 w-full max-w-7xl">
+          {/* Founder 1 */}
+          <div className="flex flex-col items-center text-center group">
+            <div className="w-56 h-72 md:w-60 md:h-[20rem] lg:w-64 lg:h-[22rem] rounded-md overflow-hidden border-4 border-white/20 shadow-2xl mb-6 transition-transform duration-500 group-hover:scale-105 group-hover:border-white/50">
+              <img src="/founder1.jpg" alt="Founder" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            </div>
+            <h3 className="text-lg md:text-xl lg:text-2xl font-semibold uppercase tracking-[0.15em] text-white">Founder Name</h3>
+            <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-gray-200 mt-2 opacity-80">Visionary</p>
+          </div>
+          
+          {/* Founder 2 */}
+          <div className="flex flex-col items-center text-center group">
+            <div className="w-56 h-72 md:w-60 md:h-[20rem] lg:w-64 lg:h-[22rem] rounded-md overflow-hidden border-4 border-white/20 shadow-2xl mb-6 transition-transform duration-500 group-hover:scale-105 group-hover:border-white/50">
+              <img src="/founder2.jpg" alt="Founder" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            </div>
+            <h3 className="text-lg md:text-xl lg:text-2xl font-semibold uppercase tracking-[0.15em] text-white">Founder Name</h3>
+            <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-gray-200 mt-2 opacity-80">Operations</p>
+          </div>
+          
+          {/* Founder 3 */}
+          <div className="flex flex-col items-center text-center group">
+            <div className="w-56 h-72 md:w-60 md:h-[20rem] lg:w-64 lg:h-[22rem] rounded-md overflow-hidden border-4 border-white/20 shadow-2xl mb-6 transition-transform duration-500 group-hover:scale-105 group-hover:border-white/50">
+              <img src="/founder3.jpg" alt="Founder" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            </div>
+            <h3 className="text-lg md:text-xl lg:text-2xl font-semibold uppercase tracking-[0.15em] text-white">Founder Name</h3>
+            <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-gray-200 mt-2 opacity-80">Culinary Director</p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
